@@ -1,0 +1,21 @@
+{
+    "name": "doughmii/dev-utils",
+    "description": "A collection of small and useful PHP utilities for daily development",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^12.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Doughmii\\DevUtils\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DoughMii"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
