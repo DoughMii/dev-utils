@@ -1,54 +1,57 @@
 # dev-utils
 
-一个用于日常开发的小型 PHP 工具集。模块化设计，暂时包含 Base62 编码器、 时间人类可读化工具等，适合在各类 PHP 项目中复用。
+> English | [简体中文](README.zh-CN.md)
 
-## 安装
+A lightweight PHP utility toolkit for daily development. Modular design — currently includes a **Base62 encoder** and a **human-friendly time formatter**, and more tools can be added over time.
 
-使用 Composer 安装：
+## Installation
+
+Install via Composer：
 
 ```sh
 composer require doughmii/dev-utils
 ```
 
-## 用法示例
+## Usage
 
-### Base62 编码器
+### 🔢 Base62Encoder
 
-以 [`Base62Encoder`](src/Id/Base62Encoder.php) 为例：
+A simple Base62 encoder/decoder that supports optional salt and batch encoding.
 
 ```php
 use DoughMii\DevUtils\Id\Base62Encoder;
 
 $encoder = new Base62Encoder();
 
-// 编码和解码单个整数
+// Encode and decode a single integer
 $encoded = $encoder->encode(123456);
 $decoded = $encoder->decode($encoded);
 
-// 使用 salt 进行编码和解码
+// Encode and decode with salt
 $encodedSalted = $encoder->encode(123456, 'my-salt');
 $decodedSalted = $encoder->decode($encodedSalted, 'my-salt');
 
-// 编码和解码多个整数
+// Encode and decode multiple integers
 $data = [1, 2, 3];
 $encodedMultiple = $encoder->encodeMultiple($data, 'salt123');
 $decodedMultiple = $encoder->decodeMultiple($encodedMultiple, count($data), 'salt123');
 ```
 
-### 时间人类可读化工具
+### 🕒 TimeHumanizer
 
-使用 [`TimeHumanizer`](src/Time/TimeHumanizer.php) 将时间差转换为更易读的格式：
+Converts time differences into human-friendly text, supporting multiple languages (English, Chinese) and precise month/year logic.
 
 ```php
 use DoughMii\DevUtils\Time\TimeHumanizer;
 
-$past = new DateTimeImmutable('-3 hours');
-echo TimeHumanizer::diffForHumans($past); 
-// 输出示例: "3 hours ago"
+$now = new DateTimeImmutable();
+$past = $now->modify('-3 days');
 
-$future = new DateTimeImmutable('+2 days');
-echo TimeHumanizer::diffForHumans($future, null, 'zh');
-// 输出示例: "2 天后"
+echo TimeHumanizer::diffForHumans($past); // e.g. "3 days ago"
+echo TimeHumanizer::fromNow($past);       // same as above
+
+// With custom locale (zh)
+echo TimeHumanizer::diffForHumans($past, null, 'zh'); // "3 天前"
 ```
 
 ## 测试
