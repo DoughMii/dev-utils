@@ -17,7 +17,7 @@ composer require doughmii/dev-utils
 以 [`Base62Encoder`](src/Id/Base62Encoder.php) 为例：
 
 ```php
-use Doughmii\DevUtils\Id\Base62Encoder;
+use DoughMii\DevUtils\Id\Base62Encoder;
 
 $encoder = new Base62Encoder();
 
@@ -40,7 +40,7 @@ $decodedMultiple = $encoder->decodeMultiple($encodedMultiple, count($data), 'sal
 使用 [`TimeHumanizer`](src/Time/TimeHumanizer.php) 将时间差转换为更易读的格式：
 
 ```php
-use Doughmii\DevUtils\Time\TimeHumanizer;
+use DoughMii\DevUtils\Time\TimeHumanizer;
 
 $past = new DateTimeImmutable('-3 hours');
 echo TimeHumanizer::diffForHumans($past); 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Doughmii\DevUtils\Time;
+namespace DoughMii\DevUtils\Time;
 
 class TimeHumanizer
 {

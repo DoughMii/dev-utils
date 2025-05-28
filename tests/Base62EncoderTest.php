@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Doughmii\DevUtils\Id\Base62Encoder;
+use DoughMii\DevUtils\Id\Base62Encoder;
 
 class Base62EncoderTest extends TestCase
 {

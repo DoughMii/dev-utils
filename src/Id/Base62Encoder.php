@@ -1,6 +1,6 @@
 <?php
 
-namespace Doughmii\DevUtils\Id;
+namespace DoughMii\DevUtils\Id;
 
 class Base62Encoder
 {

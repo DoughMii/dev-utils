@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Doughmii\DevUtils\Time\TimeHumanizer;
+use DoughMii\DevUtils\Time\TimeHumanizer;
 
 class TimeHumanizerTest extends TestCase
 {
