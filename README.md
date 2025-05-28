@@ -1,6 +1,6 @@
 # dev-utils
 
-一个用于日常开发的小型 PHP 工具集。模块化设计，包含 Base62 编码器、常用助手函数等，适合在各类 PHP 项目中复用。
+一个用于日常开发的小型 PHP 工具集。模块化设计，暂时包含 Base62 编码器、 时间人类可读化工具等，适合在各类 PHP 项目中复用。
 
 ## 安装
 
@@ -11,6 +11,8 @@ composer require doughmii/dev-utils
 ```
 
 ## 用法示例
+
+### Base62 编码器
 
 以 [`Base62Encoder`](src/Id/Base62Encoder.php) 为例：
 
@@ -31,6 +33,22 @@ $decodedSalted = $encoder->decode($encodedSalted, 'my-salt');
 $data = [1, 2, 3];
 $encodedMultiple = $encoder->encodeMultiple($data, 'salt123');
 $decodedMultiple = $encoder->decodeMultiple($encodedMultiple, count($data), 'salt123');
+```
+
+### 时间人类可读化工具
+
+使用 [`TimeHumanizer`](src/Time/TimeHumanizer.php) 将时间差转换为更易读的格式：
+
+```php
+use Doughmii\DevUtils\Time\TimeHumanizer;
+
+$past = new DateTimeImmutable('-3 hours');
+echo TimeHumanizer::diffForHumans($past); 
+// 输出示例: "3 hours ago"
+
+$future = new DateTimeImmutable('+2 days');
+echo TimeHumanizer::diffForHumans($future, null, 'zh');
+// 输出示例: "2 天后"
 ```
 
 ## 测试
